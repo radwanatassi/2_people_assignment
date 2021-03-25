@@ -1,0 +1,25 @@
+<div class="birthday">
+  <h1>Birthdays</h1>
+  <div class="content">
+    <section class="example-section">
+      <mat-checkbox [(ngModel)]="IsThisWeek" (change)="filter()" class="example-margin">In this week</mat-checkbox>
+      <mat-checkbox [(ngModel)]="IsThisMonth" (change)="filter()" class="example-margin">In this month</mat-checkbox>
+    </section>
+
+    <mat-form-field class="example-chip-list">
+      <mat-select placeholder="Select Department" (selectionChange)="filter()" [(value)]="selected_departments" multiple>
+        <mat-option *ngFor="let department of Departments" [value]="department">{{department.name}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    
+    <div class="grid-container">
+        <div class="profile" *ngFor="let employee of Filtered_Employees">
+            <img [src]="employee.img" alt="">
+            <div class="detail">
+                <div class="name">{{employee.name}} {{employee.surname}}</div>
+                <div class="date">{{employee.birthday | formateDate}}</div>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
